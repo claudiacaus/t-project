@@ -1,4 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from '@/theme/theme';
 
 interface MyAppProps {
   Component: React.ElementType;
@@ -7,7 +8,7 @@ interface MyAppProps {
 
 function MyApp({ Component, pageProps }: MyAppProps) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme} resetCSS>
       <Component {...pageProps} />
     </ChakraProvider>
   )
