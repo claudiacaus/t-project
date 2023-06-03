@@ -9,9 +9,9 @@ interface MyAppProps {
 
 function MyApp({ Component, pageProps }: MyAppProps) {
   return (
-    <ChakraProvider theme={theme} resetCSS>
+    <ChakraProvider theme={theme} cssVarsRoot="body">
       <Layout>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
       </Layout>
     </ChakraProvider>
   );

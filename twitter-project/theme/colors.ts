@@ -9,7 +9,7 @@ export const colors: ChakraTheme["colors"] = {
   dimgreyHover: "#838383",
   silver: "#c4c4c4",
   silverHover: "#d0d0d0",
-  platinum: "#f2f2f2",
+  platinum: "#d6d9db",
   platinumHover: "#f5f5f5",
   hansblue: "#5115f7",
   hansHover: "#4111c6",
