@@ -10,12 +10,13 @@ export const FollowBar = ({}: FollowBarProps) => {
       bg="black"
       w="100%"
       py="10px"
+      ml="10px"
     >
       <Flex
         w="90%"
         mx="auto"
         py="2"
-        px="10"
+        px="15"
         borderRadius="xl"
         bgColor={"gray.800"}
       >

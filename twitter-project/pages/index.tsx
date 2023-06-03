@@ -1,5 +1,6 @@
-import {Box} from '@chakra-ui/react'
-import Head from 'next/head';
+import { Box } from "@chakra-ui/react";
+import Head from "next/head";
+import { Header } from "@/components/Header";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
         <title>Home / Twitter</title>
         <meta property="og:title" content="Home / Twitter" key="title" />
       </Head>
-      <h1>Home</h1>
+      <Header label="Home" />
     </Box>
-  )
+  );
 }

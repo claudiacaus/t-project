@@ -16,7 +16,7 @@ export const Layout = ({ children }: LayoutProps) => {
             py="10px"
             colSpan={{ base: 3, lg: 2 }}
             borderX="1px"
-            borderColor="gray.700"
+            borderColor="gray.800"
             minH="full"
           >
             {children}
