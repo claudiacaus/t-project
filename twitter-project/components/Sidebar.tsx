@@ -34,23 +34,26 @@ export const Sidebar = () => {
   ];
 
   return (
-    <Flex flexDirection="column">
+    <Flex flexDirection="column" py="10px">
       <Flex flexDirection="column" justifyContent="flex-start" gap={2}>
         <SidebarLogo />
         {items.map((item) => (
           <Link href={item.href} key={item.label}>
             <Flex
-              flexDir="row"
-              justifyContent="start"
-              borderRadius="60px"
-              px="10px"
-              py="6px"
-              width="max-content"
+              flexDir={{ base: "column", lg: "row" }}
+              justifyContent="center"
+              alignItems={"center"}
+              borderRadius={{ base: "50%", lg: "60px" }}
+              px={{ base: "0", lg: "10px" }}
+              py={{ base: "0", lg: "6px" }}
+              width={{ base: "50px", lg: "max-content" }}
+              height="50px"
               _hover={{
                 cursor: "pointer",
                 bg: "gray.800",
                 bgColor: "gray.800",
               }}
+              transition={"all 0.2s ease-in-out"}
             >
               <Image src={item.icon} alt={item.label} />
               <Text
@@ -71,18 +74,20 @@ export const Sidebar = () => {
           onClick={() => {}}
           display="flex"
           variant="ghost"
-          flexDir="row"
-          justifyContent="start"
-          borderRadius="60px"
+          flexDir={{ base: "column", lg: "row" }}
+          justifyContent="center"
           alignItems={"center"}
-          px="10px"
-          py="6px"
-          width="max-content"
+          borderRadius={{ base: "50%", lg: "60px" }}
+          px={{ base: "0", lg: "10px" }}
+          py={{ base: "0", lg: "6px" }}
+          width={{ base: "50px", lg: "max-content" }}
+          height="50px"
           _hover={{
             cursor: "pointer",
             bg: "gray.800",
             bgColor: "gray.800",
           }}
+          transition={"all 0.2s ease-in-out"}
         >
           <BiLogOut size={24} />
           <Text

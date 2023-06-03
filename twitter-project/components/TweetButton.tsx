@@ -1,4 +1,5 @@
-import { Button } from "@chakra-ui/button";
+import { Box, Button, Text } from "@chakra-ui/react";
+import { BsPlusLg } from "react-icons/bs";
 
 interface TweetButtonProps {
   onClick: () => void;
@@ -11,15 +12,23 @@ export const TweetButton = ({ onClick }: TweetButtonProps) => {
       onClick={onClick}
       bg="blue"
       color="white"
-      borderRadius="60px"
+      borderRadius={{ base: "full", lg: "60px" }}
       fontWeight="bold"
       fontSize="20px"
-      width="90%"
+      p="0"
+      width={{ base: "50px", lg: "90%" }}
+      height="50px"
       _hover={{
         bg: "blueHover",
       }}
+      transition={"all 0.2s ease-in-out"}
     >
-      Tweet
+      <Box display={{ base: "block", lg: "none" }}>
+        <BsPlusLg size={20} />
+      </Box>
+      <Text ml="2" display={{ base: "none", lg: "block" }}>
+        Tweet
+      </Text>
     </Button>
   );
 };
