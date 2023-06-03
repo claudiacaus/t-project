@@ -33,9 +33,7 @@ export const button: ComponentStyleConfig = {
     },
     ghost: {
       backgroundColor: "transparant",
-      color: "onyx",
-      px: 0,
-      py: 2,
+      fontWeight: "normal",
     },
     link: {
       // Imports next base styles

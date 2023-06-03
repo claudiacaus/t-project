@@ -1,10 +1,12 @@
-import { Text, Flex } from "@chakra-ui/react";
+import { Text, Flex, Button } from "@chakra-ui/react";
 import { SidebarLogo } from "./SidebarLogo";
 import Link from "next/link";
 import Image from "next/image";
 import Home from "@/public/images/svg/home.svg";
 import Notification from "@/public/images/svg/notification.svg";
 import Profile from "@/public/images/svg/profile.svg";
+import { BiLogOut } from "react-icons/bi";
+import { TweetButton } from "./TweetButton";
 import { useRouter } from "next/router";
 
 interface SidebarProps {}
@@ -41,7 +43,7 @@ export const Sidebar = () => {
               flexDir="row"
               justifyContent="start"
               borderRadius="60px"
-              px="15px"
+              px="10px"
               py="6px"
               width="max-content"
               _hover={{
@@ -65,6 +67,35 @@ export const Sidebar = () => {
             </Flex>
           </Link>
         ))}
+        <Button
+          onClick={() => {}}
+          display="flex"
+          variant="ghost"
+          flexDir="row"
+          justifyContent="start"
+          borderRadius="60px"
+          alignItems={"center"}
+          px="10px"
+          py="6px"
+          width="max-content"
+          _hover={{
+            cursor: "pointer",
+            bg: "gray.800",
+            bgColor: "gray.800",
+          }}
+        >
+          <BiLogOut size={24} />
+          <Text
+            display={{ base: "none", lg: "block" }}
+            fontSize={{ base: "sm", lg: "20px" }}
+            color="platinum"
+            letterSpacing="wide"
+            textAlign="left"
+          >
+            Logout
+          </Text>
+        </Button>
+        <TweetButton onClick={() => {}} />
       </Flex>
     </Flex>
   );
