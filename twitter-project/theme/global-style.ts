@@ -1,13 +1,14 @@
-import { CSSObject } from '@chakra-ui/react';
+import { SystemStyleObject } from '@chakra-ui/react';
 
-export const globalStyle: CSSObject = {
+export const globalStyle: SystemStyleObject = {
   html: {
     fontSize: '16px',
   },
   body: {
     minWidth: '320px',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     fontFamily: `MaisonNeue, sans-serif`,
+    color: 'white',
   },
   '*': {
     boxSizing: 'border-box',
