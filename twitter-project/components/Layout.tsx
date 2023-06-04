@@ -10,6 +10,8 @@ import { Sidebar } from "./Sidebar";
 import { FollowBar } from "./FollowBar";
 import { TweetButton } from "./TweetButton";
 import { ModalBox } from "./modal/ModalBox";
+import { useLogin } from "@/hooks/useLogin";
+import { use, useCallback } from "react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,9 +20,15 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const loginModal = useLogin();
+
   const handleSubmit = () => {
     return;
   };
+
+  const handleOnClick = useCallback(() => {
+    loginModal.onOpen();
+  }, [loginModal]);
 
   const footer = (
     <Button colorScheme="blue" mr={3} onClick={handleSubmit} py="6" px="13">
@@ -37,7 +45,7 @@ export const Layout = ({ children }: LayoutProps) => {
       >
         <Grid templateColumns={{ base: "repeat(4, 1fr)" }} h="full">
           <Sidebar>
-            <TweetButton onClick={onOpen} />
+            <TweetButton onClick={handleOnClick} />
           </Sidebar>
           <GridItem
             py="10px"

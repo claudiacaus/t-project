@@ -33,12 +33,7 @@ export const ModalBox = ({
         onClose={onClose}
         size={{ base: "full", md: "lg" }}
       >
-        <ModalOverlay
-          bg="none"
-          backdropFilter="auto"
-          backdropInvert="20%"
-          backdropBlur="1px"
-        />
+        <ModalOverlay bg="none" backdropFilter="auto" backdropInvert="12%" />
         <ModalContent
           mt="100px"
           bgColor="black"
