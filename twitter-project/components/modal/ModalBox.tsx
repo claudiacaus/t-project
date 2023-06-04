@@ -8,6 +8,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Input,
+  Flex,
 } from "@chakra-ui/react";
 
 interface ModalBoxProps {
@@ -15,6 +16,7 @@ interface ModalBoxProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  footer?: React.ReactNode;
 }
 
 export const ModalBox = ({
@@ -22,11 +24,8 @@ export const ModalBox = ({
   isOpen,
   onClose,
   children,
+  footer,
 }: ModalBoxProps) => {
-  const handleSubmit = () => {
-    return;
-  };
-
   return (
     <>
       <Modal
@@ -43,8 +42,9 @@ export const ModalBox = ({
         <ModalContent
           mt="100px"
           bgColor="black"
+          padding="15px"
           width={{ base: "100vw", md: "500px" }}
-          height={{ base: "100vh", md: "250px" }}
+          height={{ base: "100vh", md: "max-content" }}
         >
           <ModalCloseButton
             position="absolute"
@@ -60,21 +60,20 @@ export const ModalBox = ({
             }}
             transition={"all 0.2s ease-in-out"}
           />
-          <ModalBody mt="30px" color="platinum" ml="15px">
+
+          <ModalBody
+            color="platinum"
+            width="100%"
+            display="flex"
+            flexDir="column"
+            justifyContent="center"
+            alignItems="center"
+            gap="20px"
+          >
             {children}
           </ModalBody>
 
-          <ModalFooter>
-            <Button
-              colorScheme="blue"
-              mr={3}
-              onClick={handleSubmit}
-              py="6"
-              px="13"
-            >
-              Tweet
-            </Button>
-          </ModalFooter>
+          <ModalFooter>{footer}</ModalFooter>
         </ModalContent>
       </Modal>
     </>

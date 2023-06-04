@@ -8,7 +8,7 @@ import Profile from "@/public/images/svg/profile.svg";
 import { BiLogOut } from "react-icons/bi";
 import { TweetButton } from "./TweetButton";
 import { useRouter } from "next/router";
-import { ModalBox } from "./ModalBox";
+import { ModalBox } from "./modal/ModalBox";
 
 interface SidebarProps {
   children?: React.ReactNode;

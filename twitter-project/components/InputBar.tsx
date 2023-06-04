@@ -23,7 +23,13 @@ export const InputBar: React.FC<InputBarProps> = ({
       type={type}
       disabled={disabled}
       bg="black"
-      _placeholder={{ color: "gray.700" }}
+      width="80%"
+      height="50px"
+      pl={"10px"}
+      fontSize="1.2rem"
+      borderRadius={"10px"}
+      borderColor={"gray.700"}
+      _placeholder={{ color: "gray.400", fontSize: "1rem" }}
       color="platinum"
     />
   );

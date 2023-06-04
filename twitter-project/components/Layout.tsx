@@ -4,11 +4,12 @@ import {
   Container,
   GridItem,
   useDisclosure,
+  Button,
 } from "@chakra-ui/react";
 import { Sidebar } from "./Sidebar";
 import { FollowBar } from "./FollowBar";
 import { TweetButton } from "./TweetButton";
-import { ModalBox } from "./ModalBox";
+import { ModalBox } from "./modal/ModalBox";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,6 +17,16 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleSubmit = () => {
+    return;
+  };
+
+  const footer = (
+    <Button colorScheme="blue" mr={3} onClick={handleSubmit} py="6" px="13">
+      Tweet
+    </Button>
+  );
 
   return (
     <Box bg="black" h="100vH" w="100vw">
@@ -40,7 +51,12 @@ export const Layout = ({ children }: LayoutProps) => {
           <FollowBar />
         </Grid>
       </Container>
-      <ModalBox title="Modal Title" isOpen={isOpen} onClose={onClose}>
+      <ModalBox
+        title="Modal Title"
+        isOpen={isOpen}
+        onClose={onClose}
+        footer={footer}
+      >
         <p>Modal Content</p>
       </ModalBox>
     </Box>

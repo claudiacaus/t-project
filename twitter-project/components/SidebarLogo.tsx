@@ -14,7 +14,7 @@ export const SidebarLogo = () => {
         h="50px"
         _hover={{ cursor: "pointer", bg: "gray.800" }}
       >
-        <BsTwitter size="28px" color="hansblue !important" />
+        <BsTwitter size="28px" />
       </Box>
     </Link>
   );
