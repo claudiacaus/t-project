@@ -7,6 +7,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Input,
 } from "@chakra-ui/react";
 
 interface ModalBoxProps {
@@ -22,6 +23,10 @@ export const ModalBox = ({
   onClose,
   children,
 }: ModalBoxProps) => {
+  const handleSubmit = () => {
+    return;
+  };
+
   return (
     <>
       <Modal
@@ -60,7 +65,13 @@ export const ModalBox = ({
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose} py="6" px="13">
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={handleSubmit}
+              py="6"
+              px="13"
+            >
               Tweet
             </Button>
           </ModalFooter>

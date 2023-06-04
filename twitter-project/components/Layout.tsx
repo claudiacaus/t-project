@@ -19,7 +19,11 @@ export const Layout = ({ children }: LayoutProps) => {
 
   return (
     <Box bg="black" h="100vH" w="100vw">
-      <Container h="full" w="full" px={{ base: "0", xl: "30" }}>
+      <Container
+        h="full"
+        w={{ base: "full", lg: "6xl" }}
+        px={{ base: "0", xl: "30" }}
+      >
         <Grid templateColumns={{ base: "repeat(4, 1fr)" }} h="full">
           <Sidebar>
             <TweetButton onClick={onOpen} />
