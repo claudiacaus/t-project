@@ -10,6 +10,7 @@ export const TweetButton = ({ onClick }: TweetButtonProps) => {
     <Button
       mt="20px"
       onClick={onClick}
+      display={{ base: "absolut", lg: "flex" }}
       bg="blue"
       color="white"
       borderRadius={{ base: "full", lg: "60px" }}
@@ -23,7 +24,11 @@ export const TweetButton = ({ onClick }: TweetButtonProps) => {
       }}
       transition={"all 0.2s ease-in-out"}
     >
-      <Box display={{ base: "block", lg: "none" }}>
+      <Box
+        display={{ base: "flex", lg: "none" }}
+        justifyContent="center"
+        alignItems="center"
+      >
         <BsPlusLg size={20} />
       </Box>
       <Text ml="2" display={{ base: "none", lg: "block" }}>

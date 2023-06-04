@@ -1,4 +1,4 @@
-import { Text, Flex, Button } from "@chakra-ui/react";
+import { Text, Flex, Button, useDisclosure } from "@chakra-ui/react";
 import { SidebarLogo } from "./SidebarLogo";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,11 +8,15 @@ import Profile from "@/public/images/svg/profile.svg";
 import { BiLogOut } from "react-icons/bi";
 import { TweetButton } from "./TweetButton";
 import { useRouter } from "next/router";
+import { ModalBox } from "./ModalBox";
 
-interface SidebarProps {}
+interface SidebarProps {
+  children?: React.ReactNode;
+}
 
-export const Sidebar = () => {
+export const Sidebar = ({ children }: SidebarProps) => {
   const router = useRouter();
+  const { isOpen, onClose } = useDisclosure();
 
   const items = [
     {
@@ -100,7 +104,7 @@ export const Sidebar = () => {
             Logout
           </Text>
         </Button>
-        <TweetButton onClick={() => {}} />
+        {children}
       </Flex>
     </Flex>
   );
