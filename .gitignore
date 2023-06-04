@@ -1,2 +1,9 @@
 # vs code
 ./vscode
+
+.env*.local
+.env
+*.env
+*.env.example
+*.env.local
+*.env.staging
