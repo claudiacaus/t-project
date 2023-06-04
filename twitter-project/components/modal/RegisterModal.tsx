@@ -1,56 +1,70 @@
-import { useLogin } from "@/hooks/useLogin";
-import { useRegister } from "@/hooks/useRegister";
 import { useState, useCallback } from "react";
 import { InputBar } from "@/components/InputBar";
 import { ModalBox } from "@/components/modal/ModalBox";
-import { Button, Flex, Text, Heading } from "@chakra-ui/react";
+import { Button, Heading, Flex, Text } from "@chakra-ui/react";
 import { BsTwitter } from "react-icons/bs";
+import { useLogin } from "@/hooks/useLogin";
+import { useRegister } from "@/hooks/useRegister";
 
-export const LoginModal = () => {
+export const RegisterModal = () => {
   const loginModal = useLogin();
   const registerModal = useRegister();
 
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLoginSignIn = useCallback(() => {
-    if (isLoading) return;
-    loginModal.onClose();
-    registerModal.onOpen();
-  }, [loginModal, registerModal, isLoading]);
-
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-      loginModal.onClose();
+      registerModal.onClose();
     } catch (err) {
       console.log(err);
     } finally {
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [registerModal]);
+
+  const handleRegisterSignIn = useCallback(() => {
+    if (isLoading) return;
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal, isLoading]);
 
   return (
     <>
       <Button
-        onClick={loginModal.onOpen}
+        onClick={registerModal.onOpen}
         bg="black"
         color="white"
         _hover={{ bg: "gray.700" }}
         _active={{ bg: "gray.800" }}
       >
-        Login
+        Register
       </Button>
       <ModalBox
-        title="Login"
-        isOpen={loginModal.isOpen}
-        onClose={loginModal.onClose}
+        title="Register"
+        isOpen={registerModal.isOpen}
+        onClose={registerModal.onClose}
       >
         <BsTwitter size="28px" />
-        <Heading as="h1" fontSize="24px" color="white">
-          Sign in to Twitter
+        <Heading as="h1" fontSize="24px" color="white" mb="20px">
+          Create an account
         </Heading>
+        <InputBar
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          disabled={isLoading}
+        />
+        <InputBar
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          disabled={isLoading}
+        />
         <InputBar
           placeholder="Email"
           value={email}
@@ -69,11 +83,12 @@ export const LoginModal = () => {
           bg="white"
           color="black"
           _hover={{ bg: "platinum" }}
-          _active={{ bg: "platinum" }}
+          _active={{ bg: "gray.300" }}
+          disabled={isLoading}
           width={"80%"}
-          transition={"all 0.2s ease-in-out"}
+          mt="30px"
         >
-          Sign in
+          Register
         </Button>
         <Flex
           justifyContent="space-between"
@@ -82,10 +97,10 @@ export const LoginModal = () => {
           gap="10px"
         >
           <Text fontSize="14px" color="gray.300">
-            First time using Twitter?
+            Already have an account?
           </Text>
           <Button
-            onClick={handleLoginSignIn}
+            onClick={handleRegisterSignIn}
             bg="black"
             color="blue"
             p="0"
@@ -93,7 +108,7 @@ export const LoginModal = () => {
             _focus={{ bgColor: "black" }}
             _active={{ bgColor: "black" }}
           >
-            Create an account
+            Sign in
           </Button>
         </Flex>
       </ModalBox>
