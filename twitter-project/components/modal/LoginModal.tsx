@@ -5,6 +5,7 @@ import { InputBar } from "@/components/InputBar";
 import { ModalBox } from "@/components/modal/ModalBox";
 import { Button, Flex, Text, Heading } from "@chakra-ui/react";
 import { BsTwitter } from "react-icons/bs";
+import { signIn } from "next-auth/react";
 
 export const LoginModal = () => {
   const loginModal = useLogin();
@@ -23,13 +24,16 @@ export const LoginModal = () => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
+
+      await signIn("credentials", { email, password });
+
       loginModal.onClose();
     } catch (err) {
       console.log(err);
     } finally {
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [loginModal, email, password]);
 
   return (
     <>

@@ -42,12 +42,10 @@ export const SidebarItem = ({
       onClick();
     }
 
-    if (auth && !currentUser) {
-      LoginModal.onOpen();
-    } else if (href) {
+    if (href) {
       router.push(href);
     }
-  }, [onClick, auth, currentUser, LoginModal, router, href]);
+  }, [onClick, router, href]);
 
   return (
     <ButtonLink key={label} onClick={handleClick}>

@@ -11,6 +11,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 import { ButtonLink } from "../ButtonLink";
 import { SidebarItem } from "./SidebarItem";
+import { TweetButton } from "../TweetButton";
 
 interface SidebarProps {
   children?: React.ReactNode;
@@ -54,15 +55,21 @@ export const Sidebar = ({ children }: SidebarProps) => {
         ))}
 
         {currentUser && (
-          <SidebarItem
-            label="Logout"
-            onClick={() => signOut()}
-            iconSrc=""
-            icon={icon}
-          />
+          <ButtonLink label="Logout" onClick={() => signOut()}>
+            <BiLogOut size={28} />
+            <Text
+              ml="2"
+              display={{ base: "none", lg: "block" }}
+              fontSize={{ base: "sm", lg: "20px" }}
+              color="platinum"
+              letterSpacing="wide"
+              textAlign="left"
+            >
+              Logout
+            </Text>
+          </ButtonLink>
         )}
-
-        {children}
+        <TweetButton />
       </Flex>
     </Flex>
   );

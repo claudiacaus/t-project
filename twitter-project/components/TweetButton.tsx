@@ -1,12 +1,24 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import TweetIcon from "@/public/images/svg/tweet-icon.svg";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
+import { useLogin } from "@/hooks/useLogin";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
-interface TweetButtonProps {
-  onClick: () => void;
-}
+export const TweetButton = () => {
+  const router = useRouter();
+  const loginModal = useLogin();
+  const { data: currentUser } = useCurrentUser();
 
-export const TweetButton = ({ onClick }: TweetButtonProps) => {
+  const onClick = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    router.push("/");
+  }, [loginModal, router, currentUser]);
+
   return (
     <Button
       mt="20px"
