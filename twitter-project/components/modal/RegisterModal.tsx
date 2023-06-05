@@ -5,6 +5,9 @@ import { Button, Heading, Flex, Text } from "@chakra-ui/react";
 import { BsTwitter } from "react-icons/bs";
 import { useLogin } from "@/hooks/useLogin";
 import { useRegister } from "@/hooks/useRegister";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 export const RegisterModal = () => {
   const loginModal = useLogin();
@@ -19,13 +22,30 @@ export const RegisterModal = () => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
+
+      await axios.post("/api/register", {
+        email,
+        password,
+        username,
+        name,
+      });
+
+      setIsLoading(false);
+
+      toast.success("Account created.");
+
+      signIn("credentials", {
+        email,
+        password,
+      });
+
       registerModal.onClose();
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
-  }, [registerModal]);
+  }, [email, password, registerModal, username, name]);
 
   const handleRegisterSignIn = useCallback(() => {
     if (isLoading) return;
