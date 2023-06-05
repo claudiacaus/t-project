@@ -6,7 +6,7 @@ import {
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
-import { Sidebar } from "./Sidebar";
+import { Sidebar } from "./sidebar/Sidebar";
 import { FollowBar } from "./FollowBar";
 import { TweetButton } from "./TweetButton";
 import { ModalBox } from "./modal/ModalBox";

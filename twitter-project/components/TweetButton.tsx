@@ -1,5 +1,6 @@
 import { Box, Button, Text } from "@chakra-ui/react";
-import { BsPlusLg } from "react-icons/bs";
+import TweetIcon from "@/public/images/svg/tweet-icon.svg";
+import Image from "next/image";
 
 interface TweetButtonProps {
   onClick: () => void;
@@ -29,7 +30,7 @@ export const TweetButton = ({ onClick }: TweetButtonProps) => {
         justifyContent="center"
         alignItems="center"
       >
-        <BsPlusLg size={20} />
+        <Image src={TweetIcon} alt="tweet icon" />
       </Box>
       <Text ml="2" display={{ base: "none", lg: "block" }}>
         Tweet
