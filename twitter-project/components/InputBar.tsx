@@ -28,7 +28,7 @@ export const InputBar: React.FC<InputBarProps> = ({
       pl={"10px"}
       fontSize="1.2rem"
       borderRadius={"10px"}
-      borderColor={"gray.700"}
+      borderColor={"dimgrey"}
       _placeholder={{ color: "gray.400", fontSize: "1rem" }}
       color="platinum"
     />

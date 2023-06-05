@@ -16,11 +16,11 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     <SessionProvider session={pageProps.session}>
       <Toaster />
       <ChakraProvider theme={theme} cssVarsRoot="body">
-        <LoginModal />
-        <RegisterModal />
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        <LoginModal />
+        <RegisterModal />
       </ChakraProvider>
     </SessionProvider>
   );

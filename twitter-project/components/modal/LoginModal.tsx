@@ -41,7 +41,7 @@ export const LoginModal = () => {
         onClick={loginModal.onOpen}
         bg="black"
         color="white"
-        _hover={{ bg: "gray.700" }}
+        _hover={{ bg: "dimgrey" }}
         _active={{ bg: "gray.800" }}
       >
         Login

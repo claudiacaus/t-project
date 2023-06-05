@@ -17,17 +17,16 @@ export const FollowBar = ({}: FollowBarProps) => {
       flexDir={"column"}
       bg="black"
       w="100%"
-      py="10px"
       ml="10px"
+      pt="25px"
     >
       <Flex
         flexDir={"column"}
         w="90%"
         mx="auto"
-        py="2"
-        px="15"
+        p="10px 15px 20px 15px"
         borderRadius="xl"
-        bgColor={"gray.800"}
+        bgColor={"onyx"}
       >
         <Text fontWeight="bold" fontSize="20px" color="platinum">
           Who to follow

@@ -3,9 +3,9 @@ import { ChakraTheme } from "@chakra-ui/react";
 export const colors: ChakraTheme["colors"] = {
   white: "#ffffff",
   whiteHover: "#f9f9f9",
-  onyx: "#121212",
+  onyx: "#1b1b1c",
   onyxHover: "#414141",
-  dimgrey: "#646464",
+  dimgrey: "#333639",
   dimgreyHover: "#838383",
   silver: "#c4c4c4",
   silverHover: "#d0d0d0",
