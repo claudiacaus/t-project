@@ -13,11 +13,7 @@ import { ButtonLink } from "../ButtonLink";
 import { SidebarItem } from "./SidebarItem";
 import { TweetButton } from "../TweetButton";
 
-interface SidebarProps {
-  children?: React.ReactNode;
-}
-
-export const Sidebar = ({ children }: SidebarProps) => {
+export const Sidebar = () => {
   const router = useRouter();
 
   const { data: currentUser } = useCurrentUser();
@@ -26,17 +22,19 @@ export const Sidebar = ({ children }: SidebarProps) => {
     {
       label: "Home",
       href: "/",
-      iconSrc: Home, // renamed to iconSrc to match SidebarItemProps
+      iconSrc: Home,
     },
     {
       label: "Notifications",
       href: "/notifications",
-      iconSrc: Notification, // renamed to iconSrc to match SidebarItemProps
+      iconSrc: Notification,
+      auth: true,
     },
     {
       label: "Profile",
       href: "/users/1",
-      iconSrc: Profile, // renamed to iconSrc to match SidebarItemProps
+      iconSrc: Profile,
+      auth: true,
     },
   ];
 
@@ -50,7 +48,8 @@ export const Sidebar = ({ children }: SidebarProps) => {
             key={item.label}
             href={item.href}
             label={item.label}
-            iconSrc={item.iconSrc} // use iconSrc
+            iconSrc={item.iconSrc}
+            auth={item.auth}
           />
         ))}
 
