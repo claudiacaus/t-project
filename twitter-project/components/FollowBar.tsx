@@ -48,7 +48,7 @@ export const FollowBar = ({}: FollowBarProps) => {
                     {user.name}
                   </Text>
                   <Text color="platinum" fontSize="14px">
-                    {user.username}
+                    @{user.username}
                   </Text>
                 </Flex>
               </Flex>
