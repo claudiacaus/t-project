@@ -16,11 +16,13 @@ export const UserHero = ({ userId }: UserHeroProps) => {
   return (
     <>
       <Box bgColor="dimgrey" height="200px" width="100%" position="relative">
-        {fetchedUser?.profileBanner && (
+        {fetchedUser?.coverImage && (
           <Image
             objectFit="cover"
             alt="Cover Image"
-            src={fetchedUser.profileBanner}
+            width={fetchedUser.coverImage ? "100%" : "0%"}
+            height="100%"
+            src={fetchedUser.coverImage}
           />
         )}
 

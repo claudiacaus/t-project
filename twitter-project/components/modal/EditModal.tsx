@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { InputBar } from "../InputBar";
 import { Button, Flex, Text, Heading } from "@chakra-ui/react";
+import { ImageUpload } from "../ImageUpload";
 
 interface EditModalProps {
   openEditModal: boolean;
@@ -99,19 +100,17 @@ export const EditModal = ({}) => {
         type="text"
         disabled={isLoading}
       />
-      <InputBar
-        placeholder="Profile Image"
+      <ImageUpload
         value={profileImage}
-        onChange={(e) => setProfileImage(e.target.value)}
-        type="text"
         disabled={isLoading}
+        onChange={(image) => setProfileImage(image)}
+        label="Upload profile image"
       />
-      <InputBar
-        placeholder="Cover Image"
+      <ImageUpload
         value={coverImage}
-        onChange={(e) => setCoverImage(e.target.value)}
-        type="text"
         disabled={isLoading}
+        onChange={(image) => setCoverImage(image)}
+        label="Upload cover image"
       />
       <Button
         type="submit"

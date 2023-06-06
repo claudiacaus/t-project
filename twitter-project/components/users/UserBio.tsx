@@ -6,7 +6,6 @@ import { BiCalendar } from "react-icons/bi";
 import { format } from "date-fns";
 import { useEdit } from "@/hooks/useEdit";
 import { EditModal } from "../modal/EditModal";
-import { on } from "events";
 
 interface UserBioProps {
   userId: string;
