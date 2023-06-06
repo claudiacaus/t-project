@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import { InputBar } from "../InputBar";
 import { Button, Flex, Text, Heading } from "@chakra-ui/react";
 import { ImageUpload } from "../ImageUpload";
+import { mutate } from "swr";
 
 interface EditModalProps {
   openEditModal: boolean;
@@ -51,6 +52,7 @@ export const EditModal = ({}) => {
         coverImage,
       });
       mutateFetchedUser();
+      mutate("/api/users");
       toast.success("Profile updated");
       editModal.onClose();
     } catch (error) {

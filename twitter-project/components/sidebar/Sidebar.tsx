@@ -36,7 +36,7 @@ export const Sidebar = ({ children }: SidebarProps) => {
     },
     {
       label: "Profile",
-      href: "/users/1",
+      href: `/users/${currentUser?.id}`,
       iconSrc: Profile,
       auth: true,
     },
