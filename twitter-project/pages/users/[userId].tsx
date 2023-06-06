@@ -23,7 +23,9 @@ const UserProfile = () => {
   return (
     <>
       <Head>
-        <title>{fetchedUser?.name} / Twitter</title>
+        <title>
+          {fetchedUser?.name} @{fetchedUser?.username}
+        </title>
         <meta
           property="og:title"
           content="{fetchedUser?.name} Profile / Twitter"
