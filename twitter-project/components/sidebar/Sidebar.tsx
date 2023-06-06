@@ -13,7 +13,11 @@ import { ButtonLink } from "../ButtonLink";
 import { SidebarItem } from "./SidebarItem";
 import { TweetButton } from "../TweetButton";
 
-export const Sidebar = () => {
+interface SidebarProps {
+  children: React.ReactNode;
+}
+
+export const Sidebar = ({ children }: SidebarProps) => {
   const router = useRouter();
 
   const { data: currentUser } = useCurrentUser();
@@ -68,7 +72,7 @@ export const Sidebar = () => {
             </Text>
           </ButtonLink>
         )}
-        <TweetButton />
+        {children}
       </Flex>
     </Flex>
   );

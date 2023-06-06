@@ -36,6 +36,7 @@ export const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
       _hover={{ cursor: "pointer", opacity: 0.9 }}
       transition={"all 0.3s ease"}
       overflow="hidden"
+      pos={"relative"}
     >
       <Image
         objectFit="cover"

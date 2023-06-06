@@ -11,7 +11,9 @@ import { FollowBar } from "./FollowBar";
 import { TweetButton } from "./TweetButton";
 import { ModalBox } from "./modal/ModalBox";
 import { useLogin } from "@/hooks/useLogin";
-import { use, useCallback } from "react";
+import { useCallback } from "react";
+import { useRouter } from "next/router";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -26,9 +28,17 @@ export const Layout = ({ children }: LayoutProps) => {
     return;
   };
 
+  const router = useRouter();
+
+  const { data: currentUser } = useCurrentUser();
+
   const handleOnClick = useCallback(() => {
-    loginModal.onOpen();
-  }, [loginModal]);
+    if (!currentUser) {
+      loginModal.onOpen();
+    } else {
+      onOpen();
+    }
+  }, [currentUser, loginModal, onOpen]);
 
   const footer = (
     <Button colorScheme="blue" mr={3} onClick={handleSubmit} py="6" px="13">
