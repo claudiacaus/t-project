@@ -6,16 +6,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "POST" && req.method !== "GET") {
-    return res.status(405).end();
-  }
-
   try {
     if (req.method === "POST") {
       const { currentUser } = await serverAuth(req, res);
       const { body } = req.body;
 
-      //to create a post
       const post = await prisma.post.create({
         data: {
           body,
@@ -31,7 +26,6 @@ export default async function handler(
 
       let posts;
 
-      //to get all posts of a user
       if (userId && typeof userId === "string") {
         posts = await prisma.post.findMany({
           where: {
@@ -46,7 +40,6 @@ export default async function handler(
           },
         });
       } else {
-        //to get all posts
         posts = await prisma.post.findMany({
           include: {
             user: true,
@@ -60,8 +53,22 @@ export default async function handler(
 
       return res.status(200).json(posts);
     }
+
+    if (req.method === "DELETE") {
+      const { postId } = req.body;
+
+      await prisma.post.delete({
+        where: {
+          id: postId,
+        },
+      });
+
+      return res.status(200).end();
+    }
   } catch (error) {
     console.log(error);
     return res.status(400).end();
   }
+
+  return res.status(405).end();
 }

@@ -14,6 +14,7 @@ import { useLogin } from "@/hooks/useLogin";
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import useCurrentUser from "@/hooks/useCurrentUser";
+import { Form } from "./Form";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -40,12 +41,6 @@ export const Layout = ({ children }: LayoutProps) => {
     }
   }, [currentUser, loginModal, onOpen]);
 
-  const footer = (
-    <Button colorScheme="blue" mr={3} onClick={handleSubmit} py="6" px="13">
-      Tweet
-    </Button>
-  );
-
   return (
     <Box bg="black" h="100vH" w="100vw">
       <Container
@@ -69,13 +64,8 @@ export const Layout = ({ children }: LayoutProps) => {
           <FollowBar />
         </Grid>
       </Container>
-      <ModalBox
-        title="Modal Title"
-        isOpen={isOpen}
-        onClose={onClose}
-        footer={footer}
-      >
-        <p>Modal Content</p>
+      <ModalBox title="Modal Title" isOpen={isOpen} onClose={onClose}>
+        <Form placeholder="What's happening?" />
       </ModalBox>
     </Box>
   );
