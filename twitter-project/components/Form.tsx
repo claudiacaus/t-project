@@ -1,9 +1,6 @@
 import React from "react";
 import {
-  FormControl,
-  Input,
   Box,
-  Text,
   Heading,
   Flex,
   Button,
@@ -21,7 +18,6 @@ import { useSinglePost } from "@/hooks/useSinglePost";
 import { Avatar } from "@/components/Avatar";
 import { LoginModal } from "./modal/LoginModal";
 import { RegisterModal } from "./modal/RegisterModal";
-import { max } from "date-fns";
 
 interface FormProps {
   placeholder: string;
