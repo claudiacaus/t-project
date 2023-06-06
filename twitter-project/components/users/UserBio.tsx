@@ -4,6 +4,9 @@ import useSingleUser from "@/hooks/useSingleUser";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { BiCalendar } from "react-icons/bi";
 import { format } from "date-fns";
+import { useEdit } from "@/hooks/useEdit";
+import { EditModal } from "../modal/EditModal";
+import { on } from "events";
 
 interface UserBioProps {
   userId: string;
@@ -13,10 +16,17 @@ export const UserBio = ({ userId }: UserBioProps) => {
   const { data: fetchedUser } = useSingleUser(userId);
   const { data: currentUser } = useCurrentUser();
 
+  const editInfo = useEdit();
+
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) return null;
     return format(new Date(fetchedUser.createdAt), "MMMM yyyy");
   }, [fetchedUser?.createdAt]);
+
+  //should open the edit modal
+  const onEditClick = () => {
+    if (editInfo.isOpen) return;
+  };
 
   return (
     <Flex
@@ -25,8 +35,48 @@ export const UserBio = ({ userId }: UserBioProps) => {
       borderColor="gray.800"
       width="100%"
       mt="40px"
+      position="relative"
     >
-      <Flex flexDir="column" justifyContent="flex-start" ml="20px" mb="10px">
+      <Flex
+        justifyContent="flex-end"
+        alignItems="center"
+        right="10px"
+        top="-30px"
+        position="absolute"
+      >
+        {currentUser?.id === userId ? (
+          <Button
+            py="6px"
+            px="12px"
+            bg="transparent"
+            border="1px"
+            borderColor="gray.600"
+            fontSize="0.9rem"
+            _hover={{ opacity: 0.8 }}
+            onClick={editInfo.onOpen}
+          >
+            Edit Profile
+          </Button>
+        ) : (
+          <Button
+            py="6px"
+            px="12px"
+            bg="white"
+            color="black"
+            fontSize="0.9rem"
+            _hover={{ opacity: 0.8 }}
+          >
+            Follow
+          </Button>
+        )}
+      </Flex>
+      <Flex
+        flexDir="column"
+        justifyContent="flex-start"
+        ml="20px"
+        mb="10px"
+        mt="40px"
+      >
         <Text fontSize="lg" fontWeight="bold" color="platinum" lineHeight="1">
           {fetchedUser?.name}
         </Text>
@@ -61,6 +111,7 @@ export const UserBio = ({ userId }: UserBioProps) => {
           </Flex>
         </Flex>
       </Flex>
+      <EditModal />
     </Flex>
   );
 };

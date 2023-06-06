@@ -17,6 +17,7 @@ interface ModalBoxProps {
   onClose: () => void;
   children: React.ReactNode;
   footer?: React.ReactNode;
+  onSubmit?: () => void;
 }
 
 export const ModalBox = ({

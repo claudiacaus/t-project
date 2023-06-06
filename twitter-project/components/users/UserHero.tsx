@@ -28,32 +28,7 @@ export const UserHero = ({ userId }: UserHeroProps) => {
           <Avatar userId={userId} isLarge hasBorder />
         </Box>
       </Box>
-      <Flex justifyContent="flex-end" alignItems="center" mt="10px" mr="10px">
-        {currentUser?.id === userId ? (
-          <Button
-            py="6px"
-            px="12px"
-            bg="transparent"
-            border="1px"
-            borderColor="gray.600"
-            fontSize="0.9rem"
-            _hover={{ opacity: 0.8 }}
-          >
-            Edit Profile
-          </Button>
-        ) : (
-          <Button
-            py="6px"
-            px="12px"
-            bg="white"
-            color="black"
-            fontSize="0.9rem"
-            _hover={{ opacity: 0.8 }}
-          >
-            Follow
-          </Button>
-        )}
-      </Flex>
+
       <UserBio userId={userId} />
     </>
   );
