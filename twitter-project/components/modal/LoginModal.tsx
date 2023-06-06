@@ -37,15 +37,6 @@ export const LoginModal = () => {
 
   return (
     <>
-      <Button
-        onClick={loginModal.onOpen}
-        bg="black"
-        color="white"
-        _hover={{ bg: "dimgrey" }}
-        _active={{ bg: "gray.800" }}
-      >
-        Login
-      </Button>
       <ModalBox
         title="Login"
         isOpen={loginModal.isOpen}

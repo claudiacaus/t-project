@@ -55,15 +55,6 @@ export const RegisterModal = () => {
 
   return (
     <>
-      <Button
-        onClick={registerModal.onOpen}
-        bg="black"
-        color="white"
-        _hover={{ bg: "dimgrey" }}
-        _active={{ bg: "gray.800" }}
-      >
-        Register
-      </Button>
       <ModalBox
         title="Register"
         isOpen={registerModal.isOpen}

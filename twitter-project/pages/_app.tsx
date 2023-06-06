@@ -1,8 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "@/theme/theme";
 import { Layout } from "@/components/Layout";
-import { LoginModal } from "@/components/modal/LoginModal";
-import { RegisterModal } from "@/components/modal/RegisterModal";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
 
@@ -19,8 +17,6 @@ function MyApp({ Component, pageProps }: MyAppProps) {
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        <LoginModal />
-        <RegisterModal />
       </ChakraProvider>
     </SessionProvider>
   );
