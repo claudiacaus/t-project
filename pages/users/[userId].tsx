@@ -5,6 +5,7 @@ import useSingleUser from "@/hooks/useSingleUser";
 import { MoonLoader } from "react-spinners";
 import { Flex } from "@chakra-ui/react";
 import { UserHero } from "@/components/users/UserHero";
+import { PostFeed } from "@/components/posts/PostFeed";
 
 const UserProfile = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const UserProfile = () => {
 
   if (isLoading || !fetchedUser) {
     return (
-      <Flex justifyContent={"center"} alignItems={"center"}>
+      <Flex justifyContent={"center"} alignItems={"center"} h="full">
         <MoonLoader color="blue" size={80} />
       </Flex>
     );
@@ -24,7 +25,7 @@ const UserProfile = () => {
     <>
       <Head>
         <title>
-          {fetchedUser?.name} @{fetchedUser?.username}
+          {fetchedUser?.name} (@{fetchedUser?.username}) / Twitter
         </title>
         <meta
           property="og:title"
@@ -34,6 +35,7 @@ const UserProfile = () => {
       </Head>
       <Header showBackArrow label={fetchedUser?.name} />
       <UserHero userId={userId as string} />
+      <PostFeed userId={userId as string} />
     </>
   );
 };
