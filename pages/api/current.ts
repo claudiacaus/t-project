@@ -10,7 +10,6 @@ export default async function handler(
   }
 
   try {
-    // @ts-ignore
     const { currentUser } = await serverAuth(req, res);
 
     return res.status(200).json(currentUser);
