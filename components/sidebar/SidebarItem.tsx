@@ -3,10 +3,8 @@ import { useRouter } from "next/router";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { BsDot } from "react-icons/bs";
 import { useLogin } from "@/hooks/useLogin";
-import { LoginModal } from "../modal/LoginModal";
 import Image from "next/dist/client/image";
-import { Flex, Text, Box } from "@chakra-ui/layout";
-import Link from "next/link";
+import {  Text, Box } from "@chakra-ui/layout";
 import { ButtonLink } from "../ButtonLink";
 
 interface SidebarItemProps {
@@ -27,7 +25,6 @@ export const SidebarItem = ({
   onClick,
   auth,
   alert,
-  children,
   icon,
 }: SidebarItemProps) => {
   const router = useRouter();

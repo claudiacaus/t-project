@@ -1,6 +1,6 @@
-import { Flex, Image, Text, Box, Button } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import { useDropzone } from "react-dropzone";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { AiOutlinePicture } from "react-icons/ai";
 
 interface ImageUploadProps {

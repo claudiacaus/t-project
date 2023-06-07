@@ -5,6 +5,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import prisma from "@/libs/prismadb";
 
+// authOptions is used to configure the authentication providers
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [

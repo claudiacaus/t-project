@@ -1,7 +1,5 @@
-import { Text, Flex, Button } from "@chakra-ui/react";
+import { Text, Flex } from "@chakra-ui/react";
 import { SidebarLogo } from "./SidebarLogo";
-import Link from "next/link";
-import Image from "next/image";
 import Home from "@/public/images/svg/home.svg";
 import Notification from "@/public/images/svg/notification.svg";
 import Profile from "@/public/images/svg/profile.svg";
@@ -11,7 +9,6 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 import { ButtonLink } from "../ButtonLink";
 import { SidebarItem } from "./SidebarItem";
-import { TweetButton } from "../TweetButton";
 
 interface SidebarProps {
   children: React.ReactNode;

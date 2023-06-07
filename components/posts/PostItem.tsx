@@ -1,11 +1,10 @@
 import { Box, Flex, Text, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useCallback, useMemo } from "react";
-import { AiFillHeart, AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
+import { AiOutlineMessage } from "react-icons/ai";
 import { formatDistanceToNowStrict } from "date-fns";
 import { useLogin } from "@/hooks/useLogin";
 import { usePosts } from "@/hooks/usePosts";
-import { useSinglePost } from "@/hooks/useSinglePost";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { Avatar } from "../Avatar";
 import { RiDeleteBin5Line } from "react-icons/ri";
@@ -15,14 +14,9 @@ import { toast } from "react-hot-toast";
 interface PostItemProps {
   data: Record<string, any>;
   userId?: string;
-  mutateSinglePost?: () => void;
 }
 
-export const PostItem: React.FC<PostItemProps> = ({
-  data = {},
-  userId,
-  mutateSinglePost,
-}) => {
+export const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
   const router = useRouter();
   const loginModal = useLogin();
 
@@ -36,10 +30,6 @@ export const PostItem: React.FC<PostItemProps> = ({
     },
     [router, data.user.id]
   );
-
-  const goToPost = useCallback(() => {
-    router.push(`/posts/${data.id}`);
-  }, [router, data.id]);
 
   const createdAt = useMemo(() => {
     if (!data?.createdAt) {
@@ -59,6 +49,7 @@ export const PostItem: React.FC<PostItemProps> = ({
       toast.error("Something went wrong");
     }
   }, [data.id, mutatePosts]);
+
   return (
     <Box
       borderBottom="1px"
@@ -99,10 +90,10 @@ export const PostItem: React.FC<PostItemProps> = ({
               variant="ghost"
               _hover={{ bg: "dimgrey" }}
             >
-              <RiDeleteBin5Line size={20} />
+              <RiDeleteBin5Line size={20} id="svg-color" />
             </Button>
           </Flex>
-          <Text color="white" mt={1} onClick={goToPost}>
+          <Text color="white" mt={1}>
             {data.body}
           </Text>
 

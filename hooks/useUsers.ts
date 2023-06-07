@@ -1,7 +1,6 @@
 import useSWR from "swr";
 import fetcher from "@/libs/fetcher";
 
-// useCurrentUser is a custom hook that wraps useSWR
 const useUsers = () => {
   const { data, error, isLoading, mutate } = useSWR("/api/users", fetcher);
 

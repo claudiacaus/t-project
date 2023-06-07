@@ -1,7 +1,5 @@
-import React from "react";
-import { Image, Box, Button, Flex } from "@chakra-ui/react";
+import { Image, Box } from "@chakra-ui/react";
 import useSingleUser from "@/hooks/useSingleUser";
-import useCurrentUser from "@/hooks/useCurrentUser";
 import { Avatar } from "../Avatar";
 import { UserBio } from "./UserBio";
 
@@ -11,7 +9,6 @@ interface UserHeroProps {
 
 export const UserHero = ({ userId }: UserHeroProps) => {
   const { data: fetchedUser } = useSingleUser(userId);
-  const { data: currentUser } = useCurrentUser();
 
   return (
     <>
@@ -30,7 +27,6 @@ export const UserHero = ({ userId }: UserHeroProps) => {
           <Avatar userId={userId} isLarge hasBorder />
         </Box>
       </Box>
-
       <UserBio userId={userId} />
     </>
   );

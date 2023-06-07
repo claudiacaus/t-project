@@ -6,13 +6,9 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { InputBar } from "../InputBar";
-import { Button, Flex, Text, Heading } from "@chakra-ui/react";
+import { Button, Heading } from "@chakra-ui/react";
 import { ImageUpload } from "../ImageUpload";
 import { mutate } from "swr";
-
-interface EditModalProps {
-  openEditModal: boolean;
-}
 
 export const EditModal = ({}) => {
   const { data: currentUser } = useCurrentUser();

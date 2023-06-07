@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Flex, Text, Image, Box, Button } from "@chakra-ui/react";
+import { Flex, Text, Button } from "@chakra-ui/react";
 import useSingleUser from "@/hooks/useSingleUser";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { BiCalendar } from "react-icons/bi";
@@ -21,11 +21,6 @@ export const UserBio = ({ userId }: UserBioProps) => {
     if (!fetchedUser?.createdAt) return null;
     return format(new Date(fetchedUser.createdAt), "MMMM yyyy");
   }, [fetchedUser?.createdAt]);
-
-  //should open the edit modal
-  const onEditClick = () => {
-    if (editInfo.isOpen) return;
-  };
 
   return (
     <Flex
@@ -86,7 +81,7 @@ export const UserBio = ({ userId }: UserBioProps) => {
       <Flex flexDir="column" justifyContent="flex-start" ml="20px" mb="10px">
         <Text>{fetchedUser?.bio}</Text>
         <Flex mt="10px" alignItems="center">
-          <BiCalendar size={20} id="calendar" />
+          <BiCalendar size={20} id="svg-color" />
           <Text fontSize="sm" color="gray.500" ml="5px">
             Joined {createdAt}
           </Text>

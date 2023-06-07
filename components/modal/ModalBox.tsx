@@ -1,14 +1,10 @@
 import {
-  Button,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
-  ModalHeader,
   ModalOverlay,
-  Input,
-  Flex,
 } from "@chakra-ui/react";
 
 interface ModalBoxProps {
@@ -21,7 +17,6 @@ interface ModalBoxProps {
 }
 
 export const ModalBox = ({
-  title,
   isOpen,
   onClose,
   children,
@@ -68,7 +63,6 @@ export const ModalBox = ({
           >
             {children}
           </ModalBody>
-
           <ModalFooter>{footer}</ModalFooter>
         </ModalContent>
       </Modal>

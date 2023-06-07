@@ -4,7 +4,6 @@ import {
   Container,
   GridItem,
   useDisclosure,
-  Button,
 } from "@chakra-ui/react";
 import { Sidebar } from "./sidebar/Sidebar";
 import { FollowBar } from "./FollowBar";
@@ -12,7 +11,6 @@ import { TweetButton } from "./TweetButton";
 import { ModalBox } from "./modal/ModalBox";
 import { useLogin } from "@/hooks/useLogin";
 import { useCallback } from "react";
-import { useRouter } from "next/router";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { Form } from "./Form";
 
@@ -24,12 +22,6 @@ export const Layout = ({ children }: LayoutProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const loginModal = useLogin();
-
-  const handleSubmit = () => {
-    return;
-  };
-
-  const router = useRouter();
 
   const { data: currentUser } = useCurrentUser();
 

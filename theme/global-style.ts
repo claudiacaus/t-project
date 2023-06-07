@@ -83,7 +83,7 @@ export const globalStyle: SystemStyleObject = {
     display: "block",
     color: "platinum",
   },
-  "#calendar": {
+  "#svg-color": {
     color: "gray.500",
   },
 };

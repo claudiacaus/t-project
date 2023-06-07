@@ -1,6 +1,5 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 interface ButtonLinkProps {
   href?: string;
@@ -9,15 +8,7 @@ interface ButtonLinkProps {
   children: React.ReactNode;
 }
 
-export const ButtonLink = ({
-  href,
-  onClick,
-  label,
-  children,
-}: ButtonLinkProps) => {
-  const router = useRouter();
-  const isCurrentPath = router.pathname === href;
-
+export const ButtonLink = ({ href, onClick, children }: ButtonLinkProps) => {
   const Content = (
     <Flex
       flexDir={{ base: "column", lg: "row" }}

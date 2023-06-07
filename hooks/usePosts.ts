@@ -1,5 +1,4 @@
 import useSWR from "swr";
-
 import fetcher from "@/libs/fetcher";
 
 export const usePosts = (userId?: string) => {
