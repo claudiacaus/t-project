@@ -1,10 +1,10 @@
 ﻿# Twitter project 
 
 A clone of Twitter developed using Next.js, TypeScript, Prisma, MongoDB, and Chakra UI, deployed on Vercel.
-
-![Website](https://github.com/claudiadewindt/t-project/assets/55986532/675b61d5-ced2-4b9c-8b7f-c0cfa94e941e)
-![Website](https://github.com/claudiadewindt/t-project/assets/55986532/10fd7562-420d-4440-8e03-e8d1992860f1)
-
+<p align="center">
+<img width="70%" align="center" src="https://github.com/claudiadewindt/t-project/assets/55986532/f5c5602d-ad2a-4880-979d-0164df19ec3c"/>
+<img width="70%" align="center" src="https://github.com/claudiadewindt/t-project/assets/55986532/d4ef9e29-fe03-491b-8c8d-055dc24f139a" />
+</p>
 
 ## Features!
 
