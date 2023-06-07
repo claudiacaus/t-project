@@ -1,4 +1,4 @@
-﻿# Twitter project
+﻿# Twitter project 
 
 A clone of Twitter developed using Next.js, TypeScript, Prisma, MongoDB, and Chakra UI, deployed on Vercel.
 
@@ -45,5 +45,5 @@ npm run dev
 Open http://localhost:3000 with your browser to see the result.
 ```
 
-##Usage
+## Usage
 To use this Twitter clone, you can register an account and start tweeting!
