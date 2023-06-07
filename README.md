@@ -2,7 +2,12 @@
 
 A clone of Twitter developed using Next.js, TypeScript, Prisma, MongoDB, and Chakra UI, deployed on Vercel.
 
-## Features
+![Website](https://github.com/claudiadewindt/t-project/assets/55986532/675b61d5-ced2-4b9c-8b7f-c0cfa94e941e)
+![Website](https://github.com/claudiadewindt/t-project/assets/55986532/10fd7562-420d-4440-8e03-e8d1992860f1)
+
+
+## Features!
+
 
 - User Authentication
 - Tweeting functionality
