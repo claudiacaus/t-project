@@ -3,8 +3,12 @@ import Head from "next/head";
 import { Header } from "@/components/Header";
 import { Form } from "@/components/Form";
 import { PostFeed } from "@/components/posts/PostFeed";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const { userId } = router.query;
+
   return (
     <Box>
       <Head>
@@ -13,7 +17,7 @@ export default function Home() {
       </Head>
       <Header label="Home" />
       <Form placeholder="What's happening?" />
-      <PostFeed />
+      <PostFeed userId={userId as string} />
     </Box>
   );
 }

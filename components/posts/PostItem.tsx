@@ -84,14 +84,16 @@ export const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
             <Text color="gray.500" fontSize="sm">
               {createdAt}
             </Text>
-            <Button
-              onClick={deletePost}
-              p="4px"
-              variant="ghost"
-              _hover={{ bg: "dimgrey" }}
-            >
-              <RiDeleteBin5Line size={20} id="svg-color" />
-            </Button>
+            {currentUser?.id === userId && (
+              <Button
+                onClick={deletePost}
+                p="4px"
+                variant="ghost"
+                _hover={{ bg: "dimgrey" }}
+              >
+                <RiDeleteBin5Line size={20} id="svg-color" />
+              </Button>
+            )}
           </Flex>
           <Text color="white" mt={1}>
             {data.body}
