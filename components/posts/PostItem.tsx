@@ -10,6 +10,7 @@ import { Avatar } from "../Avatar";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 interface PostItemProps {
   data: Record<string, any>;
@@ -84,7 +85,7 @@ export const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
             <Text color="gray.500" fontSize="sm">
               {createdAt}
             </Text>
-            {currentUser?.id === userId && (
+            {currentUser && currentUser?.id === data.user.id && (
               <Button
                 onClick={deletePost}
                 p="4px"

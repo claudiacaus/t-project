@@ -1,11 +1,11 @@
-import { useLogin } from "@/hooks/useLogin";
-import { useRegister } from "@/hooks/useRegister";
 import { useState, useCallback } from "react";
 import { InputBar } from "@/components/InputBar";
 import { ModalBox } from "@/components/modal/ModalBox";
 import { Button, Flex, Text, Heading } from "@chakra-ui/react";
 import { BsTwitter } from "react-icons/bs";
 import { signIn } from "next-auth/react";
+import { useLogin } from "@/hooks/useLogin";
+import { useRegister } from "@/hooks/useRegister";
 
 export const LoginModal = () => {
   const loginModal = useLogin();
@@ -14,6 +14,7 @@ export const LoginModal = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState({ email: "", password: "" });
 
   const handleLoginSignIn = useCallback(() => {
     if (isLoading) return;
@@ -21,19 +22,32 @@ export const LoginModal = () => {
     registerModal.onOpen();
   }, [loginModal, registerModal, isLoading]);
 
-  const onSubmit = useCallback(async () => {
-    try {
-      setIsLoading(true);
+  const onSubmit = useCallback(
+    async (e: any) => {
+      e.preventDefault();
 
-      await signIn("credentials", { email, password });
+      if (!email || !password) {
+        setError({
+          email: !email ? "Email is required." : "",
+          password: !password ? "Password is required." : "",
+        });
+        return;
+      }
 
-      loginModal.onClose();
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [loginModal, email, password]);
+      try {
+        setIsLoading(true);
+
+        await signIn("credentials", { email, password });
+
+        loginModal.onClose();
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [loginModal, email, password]
+  );
 
   return (
     <>
@@ -46,30 +60,35 @@ export const LoginModal = () => {
         <Heading as="h1" fontSize="24px" color="white">
           Sign in to Twitter
         </Heading>
-        <InputBar
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={isLoading}
-        />
-        <InputBar
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          disabled={isLoading}
-        />
-        <Button
-          onClick={onSubmit}
-          bg="white"
-          color="black"
-          _hover={{ bg: "platinum" }}
-          _active={{ bg: "platinum" }}
-          width={"80%"}
-          transition={"all 0.2s ease-in-out"}
-        >
-          Sign in
-        </Button>
+        <form onSubmit={onSubmit}>
+          <InputBar
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+          />
+          {error.email && <div>{error.email}</div>}
+          <InputBar
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            disabled={isLoading}
+          />
+          {error.password && <div>{error.password}</div>}
+          <Button
+            onClick={onSubmit}
+            type="submit"
+            bg="white"
+            color="black"
+            _hover={{ bg: "platinum" }}
+            _active={{ bg: "platinum" }}
+            width={"80%"}
+            transition={"all 0.2s ease-in-out"}
+          >
+            Sign in
+          </Button>
+        </form>
         <Flex
           justifyContent="space-between"
           alignItems="center"

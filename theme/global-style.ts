@@ -86,4 +86,12 @@ export const globalStyle: SystemStyleObject = {
   "#svg-color": {
     color: "gray.500",
   },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    gap: "1.2rem",
+  },
 };
