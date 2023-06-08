@@ -18,6 +18,7 @@ import { useSinglePost } from "@/hooks/useSinglePost";
 import { Avatar } from "@/components/Avatar";
 import { LoginModal } from "./modal/LoginModal";
 import { RegisterModal } from "./modal/RegisterModal";
+import { MoonLoader } from "react-spinners";
 
 interface FormProps {
   placeholder: string;
@@ -29,16 +30,16 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
   const registerModal = useRegister();
   const loginModal = useLogin();
 
-  const { data: currentUser } = useCurrentUser();
+  const { data: currentUser, isLoading } = useCurrentUser();
   const { mutate: mutatePosts } = usePosts();
   const { mutate: mutateSinglePost } = useSinglePost(postId as string);
 
   const [body, setBody] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingContent, setIsLoadingContent] = useState(false);
 
   const onSubmit = useCallback(async () => {
     try {
-      setIsLoading(true);
+      setIsLoadingContent(true);
 
       const url = isComment ? `/api/comments?postId=${postId}` : "/api/posts";
 
@@ -51,7 +52,7 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
-      setIsLoading(false);
+      setIsLoadingContent(false);
     }
   }, [body, mutatePosts, isComment, postId, mutateSinglePost]);
 
@@ -63,7 +64,11 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
 
   return (
     <Box borderBottom="1px" borderColor="dimgrey" px={5} py={2}>
-      {currentUser ? (
+      {isLoading ? (
+        <Flex justifyContent={"center"} alignItems={"center"} h="full">
+          <MoonLoader color="blue" size={80} />
+        </Flex>
+      ) : currentUser ? (
         <Flex direction="row" gap="10px">
           <Box ml="10px">
             <Avatar userId={currentUser?.id} />
@@ -72,7 +77,7 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
             <Textarea
               border="none"
               borderRadius={0}
-              isDisabled={isLoading || maxTextFull}
+              isDisabled={isLoadingContent || maxTextFull}
               onChange={(event) => setBody(event.target.value)}
               value={body}
               mt={3}
@@ -90,7 +95,7 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
               resize="vertical"
               height="max-content"
               placeholder={placeholder}
-              opacity={isLoading ? 0.8 : 1}
+              opacity={isLoadingContent ? 0.8 : 1}
             />
             <Divider
               opacity={0}
@@ -101,7 +106,7 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
               <Button
                 mr="10px"
                 mb="5px"
-                isDisabled={isLoading || !body}
+                isDisabled={isLoadingContent || !body}
                 onClick={onSubmit}
                 _hover={{ opacity: 0.8 }}
                 _active={{ opacity: 0.6 }}
